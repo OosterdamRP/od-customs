@@ -1,8 +1,19 @@
+local QBCore = exports['qb-core']:GetCoreObject()
 local getModLabel = require('client.utils.getModLabel')
 local originalMods = {}
 local originalTurbo
 local lastIndex
 local VehicleClass = require('client.utils.enums.VehicleClass')
+
+
+local function GetVehiclePrice(vehicle)
+    local hash = GetEntityModel(vehicle)
+    for _,v in pairs(QBCore.Shared.Vehicles) do
+        if v.hash == hash then
+            return v.price * 0.1
+        end
+    end
+end
 
 local function priceLabel(price)
     if type(price) ~= 'table' then
@@ -13,7 +24,8 @@ local function priceLabel(price)
     table.remove(copy, 1)
 
     for i = 1, #copy do
-        copy[i] = ('%d: %s%s'):format(i, Config.Currency, copy[i])
+        local calculatedPrice = math.floor(GetVehiclePrice(vehicle) * copy[i])
+        copy[i] = ('%d: %s%s'):format(i, Config.Currency, calculatedPrice)
     end
 
     return table.concat(copy, ' | ')
@@ -63,7 +75,7 @@ local function performance()
         options[#options+1] = {
             id = 18,
             label = 'Turbo',
-            description = ('%s%s'):format(Config.Currency, Config.Prices[18]),
+            description = ('%s%s'):format(Config.Currency, GetVehiclePrice(vehicle) * Config.Prices[18]),
             values = {'Disabled', 'Enabled'},
             close = true,
             defaultIndex = originalTurbo and 2 or 1,

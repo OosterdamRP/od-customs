@@ -5,12 +5,28 @@ else
     warn('qb-core is missing, modifications won\'t cost anything')
 end
 
----@return number
+local function GetVehiclePrice(vehicle)
+    local player = source -- This is the player's ID
+    local vehicle = GetVehiclePedIsIn(GetPlayerPed(player), false)
+    local hash = GetEntityModel(vehicle)
+    for _,v in pairs(QBCore.Shared.Vehicles) do
+        if v.hash == hash then
+            return v.price * 0.1
+        end
+    end
+end
+
+----@return number
 local function getModPrice(mod, level)
+    local player = source -- This is the player's ID
+    -- Get the vehicle the player is in
+    local vehicle = GetVehiclePedIsIn(GetPlayerPed(player), false)
     if mod == 'cosmetic' or mod == 'colors' or mod == 18 then
-        return Config.Prices[mod] --[[@as number]]
+        return math.floor(GetVehiclePrice(vehicle) * Config.Prices[mod]) --[[@as number]]
+        -- return Config.Prices[mod] --[[@as number]]
     else
-        return Config.Prices[mod][level]
+        return math.floor(GetVehiclePrice(vehicle) * Config.Prices[mod][level])
+        -- return Config.Prices[mod][level]
     end
 end
 

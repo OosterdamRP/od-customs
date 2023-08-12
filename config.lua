@@ -1,6 +1,6 @@
 Config = {}
 
-Config.Currency = '$'
+Config.Currency = '€'
 
 ---@type ZoneOptions[]
 Config.Zones = {
@@ -78,7 +78,7 @@ Config.Mods = {
     { id = 13, label = 'Transmission Upgrade', category = 'performance' },
     { id = 14, label = 'Horns',                category = 'parts' },
     { id = 15, label = 'Suspension Upgrade',   category = 'performance' },
-    { id = 16, label = 'Armor Upgrade',        category = 'performance', enabled = false },
+    { id = 16, label = 'Armor Upgrade',        category = 'performance', enabled = true },
     { id = 17, label = 'Nitrous',              category = 'performance', enabled = false },
     -- { id = 18, label = 'Turbo Upgrade', category = 'performance' },
     { id = 19, label = 'Subwoofer',            category = 'parts' },
@@ -624,9 +624,10 @@ Config.Wheels = {
 Config.Prices = {
     ['cosmetic'] = 500,
     ['colors'] = 1000,
-    [11] = { 0, 10000, 20000, 30000, 40000 },     -- Engine
-    [12] = { 0, 2500, 5000, 7500 },               -- Brakes
-    [13] = { 0, 5000, 10000, 15000, 20000 },      -- Transmission
-    [15] = { 0, 3000, 6000, 9000, 12000, 15000 }, -- Suspension
-    [18] = 10000                                  -- Turbo
+    [11] = { 0, 0.1, 0.2, 0.3, 0.4 },     -- Engine
+    [12] = { 0, 0.1, 0.2, 0.3 },               -- Brakes
+    [13] = { 0, 0.1, 0.2, 0.3, 0.4 },      -- Transmission
+    [15] = { 0, 0.1, 0.2, 0.3, 0.4, 0.5 }, -- Suspension
+    [16] = { 0, 0.1, 0.2, 0.3, 0.4, 1.5},      -- Armor
+    [18] = 0.3                                  -- Turbo
 }
