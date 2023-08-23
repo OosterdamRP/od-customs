@@ -1,6 +1,6 @@
 local QBCore
-if GetResourceState('qb-core') == 'started' then
-    QBCore = exports['qb-core']:GetCoreObject()
+if GetResourceState('qbx-core') == 'started' then
+    QBCore = exports['qbx-core']:GetCoreObject()
 else
     warn('qb-core is missing, modifications won\'t cost anything')
 end

@@ -2,8 +2,8 @@ local zoneId
 local QBCore
 local allowAccess = false
 
-if GetResourceState('qb-core') == 'started' then
-    QBCore = exports['qb-core']:GetCoreObject()
+if GetResourceState('qbx-core') == 'started' then
+    QBCore = exports['qbx-core']:GetCoreObject()
 end
 
 ---@param vertices vector3[]
