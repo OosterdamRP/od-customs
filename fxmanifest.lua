@@ -15,6 +15,7 @@ server_script 'server.lua'
 client_scripts {
     'client/menus/main.lua',
     'client/zones.lua',
+    'client/utils/checkTunes.lua',
 }
 shared_scripts {
     '@ox_lib/init.lua',
