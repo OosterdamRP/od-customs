@@ -21,12 +21,12 @@ local function getModPrice(mod, level)
     local player = source -- This is the player's ID
     -- Get the vehicle the player is in
     local vehicle = GetVehiclePedIsIn(GetPlayerPed(player), false)
-    if mod == 'cosmetic' or mod == 'colors' or mod == 18 then
-        return math.floor(GetVehiclePrice(vehicle) * Config.Prices[mod]) --[[@as number]]
-        -- return Config.Prices[mod] --[[@as number]]
+    if mod == 'cosmetic' or mod == 'colors' then
+        return Config.Prices[mod] --[[@as number]]
+    elseif mod == 18 then
+        return math.floor(GetVehiclePrice(vehicle) * Config.Prices[mod])
     else
         return math.floor(GetVehiclePrice(vehicle) * Config.Prices[mod][level])
-        -- return Config.Prices[mod][level]
     end
 end
 
@@ -36,11 +36,11 @@ end
 local function removeMoney(source, amount)
     if not QBCore then return true end
     local player = QBCore.Functions.GetPlayer(source)
-    local cashBalance = player.Functions.GetMoney('cash')
+    local cashBalance = exports.ox_inventory:getCash(source) or 0
     local bankBalance = player.Functions.GetMoney('bank')
 
     if cashBalance >= amount then
-        player.Functions.RemoveMoney('cash', amount, "Customs")
+        exports.ox_inventory:removeCash(source,amount, "Customs")
         return true
     elseif bankBalance >= amount then
         player.Functions.RemoveMoney('bank', amount, "Customs")
