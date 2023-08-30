@@ -13,18 +13,18 @@ RegisterNetEvent('od-customs:client:CheckTunes', function()
     local veh = QBCore.Functions.GetClosestVehicle()
     local vehicle = GetEntityModel(veh)
     print(vehicle)
-    local Engine = GetVehicleMod(veh, 11) if Engine == -1 then Engine = 0 end
+    local Engine = GetVehicleMod(veh, 11) + 1
     print(Engine)
-    local Brakes = GetVehicleMod(veh, 12) if Brakes == -1 then Brakes = 0 end
+    local Brakes = GetVehicleMod(veh, 12) + 1
     print(Brakes)
-    local Transmission = GetVehicleMod(veh, 13) if Transmission == -1 then Transmission = 0 end
+    local Transmission = GetVehicleMod(veh, 13) + 1
     print(Transmission)
-    local Suspension = GetVehicleMod(veh, 15) if Suspension == -1 then Suspension = 0 end
+    local Suspension = GetVehicleMod(veh, 15) + 1
     print(Suspension)
     originalTurbo = IsToggleModOn(vehicle, 18)
     local Turbo = originalTurbo and 1 or 0
     print(Turbo)
-    local Armor = GetVehicleMod(veh, 16) if Armor == -1 then Armor = 0 end
+    local Armor = GetVehicleMod(veh, 16) + 1
     print(Armor)
     local Performance = Engine + Brakes + Transmission + Suspension + Turbo + Armor
     print(Performance)
@@ -35,7 +35,7 @@ RegisterNetEvent('od-customs:client:CheckTunes', function()
         options = {
             {label = 'Engine Level ' .. Engine .. '/4', description = 'Engine level max = 4, Stock = 0', icon = 'car-side'},
             {label = 'Brakes Level ' .. Brakes .. '/3', description = 'Brakes level max = 3, Stock = 0', icon = 'car-side'},
-            {label = 'Transmission Level ' .. Transmission .. '/4', description = 'Transmission level max = 4, Stock = 0', icon = 'car-side'},
+            {label = 'Transmission Level ' .. Transmission .. '/3', description = 'Transmission level max = 3, Stock = 0', icon = 'car-side'},
             {label = 'Suspension Level ' .. Suspension .. '/5', description = 'Suspension level max = 5, Stock = 0', icon = 'car-side'},
             {label = 'Turbo Level ' .. Turbo .. '/1', description = 'Turbo level max = 1, Stock = 0', icon = 'car-side'},
             {label = 'Armor Level ' .. Armor .. '/5', description = 'Armor level max = 5, Stock = 0', icon = 'car-side'},
