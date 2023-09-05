@@ -2,35 +2,33 @@
 
 local QBCore = exports['qbx-core']:GetCoreObject()
 
+-- Functions
+function GetVehicleName(vehicle)
+    local hash = GetEntityModel(vehicle)
+    for _,v in pairs(QBCore.Shared.Vehicles) do
+        if v.hash == hash then
+            return v.name
+        end
+    end
+end
+
 -- Performance tunes checken
 RegisterNetEvent('od-customs:client:CheckTunes', function()
     local vehicle = QBCore.Functions.GetClosestVehicle()
-    print('Found vehicle', vehicle)
     if not DoesEntityExist(vehicle) then return end
 
     local plate = QBCore.Functions.GetPlate(vehicle)
-    print('Found plate', plate)
-    local veh = QBCore.Functions.GetClosestVehicle()
-    local vehicle = GetEntityModel(veh)
-    print(vehicle)
-    local Engine = GetVehicleMod(veh, 11) + 1
-    print(Engine)
-    local Brakes = GetVehicleMod(veh, 12) + 1
-    print(Brakes)
-    local Transmission = GetVehicleMod(veh, 13) + 1
-    print(Transmission)
-    local Suspension = GetVehicleMod(veh, 15) + 1
-    print(Suspension)
-    originalTurbo = IsToggleModOn(vehicle, 18)
-    local Turbo = originalTurbo and 1 or 0
-    print(Turbo)
-    local Armor = GetVehicleMod(veh, 16) + 1
-    print(Armor)
+    local Engine = GetVehicleMod(vehicle, 11) + 1
+    local Brakes = GetVehicleMod(vehicle, 12) + 1
+    local Transmission = GetVehicleMod(vehicle, 13) + 1
+    local Suspension = GetVehicleMod(vehicle, 15) + 1
+    local Turbo = IsToggleModOn(vehicle, 18) and 1 or 0
+    local Armor = GetVehicleMod(vehicle, 16) + 1
     local Performance = Engine + Brakes + Transmission + Suspension + Turbo + Armor
-    print(Performance)
+
     lib.registerMenu({
         id = 'CheckTunes',
-        title = 'Tunes',
+        title = GetVehicleName(vehicle) ..' [' .. tostring(plate) .. ']',
         position = 'top-right',
         options = {
             {label = 'Engine Level ' .. Engine .. '/4', description = 'Engine level max = 4, Stock = 0', icon = 'car-side'},
@@ -42,13 +40,42 @@ RegisterNetEvent('od-customs:client:CheckTunes', function()
         }
     })
 
-    if Performance < 1 then
-        QBCore.Functions.Notify('Deze auto heeft geen performance tunes', 'error')
-        print('No performance tunes')
+    if GetVehicleDoorLockStatus(vehicle) == 2 then
+        lib.notify({
+            title = 'Auto gesloten',
+            description = 'Vraag de eigenaar voor de auto te openen',
+            type = 'warning',
+            position = 'center-left'
+        })
+    elseif Performance < 1 then
+        lib.notify({
+            title = 'Geen modificaties',
+            description = 'Deze auto heeft geen performance tunes',
+            type = 'error',
+            position = 'center-left'
+        })
     else
-        QBCore.Functions.Notify('Deze auto heeft performance tunes', 'success')
+        lib.progressCircle({
+            duration = 3000,
+            label = 'Checking tunes...',
+            position = 'bottom',
+            useWhileDead = false,
+            canCancel = false,
+            disable = {
+                car = true,
+            },
+            anim = {
+                dict = 'anim@amb@business@cfm@cfm_cut_sheets@',
+                clip = 'look_left_at_sheets_billcutter'
+            },
+        })
+        lib.notify({
+            title = 'Tune menu geopend',
+            description = 'Deze auto heeft een aantal tunes',
+            type = 'success',
+            position = 'center-left'
+        })
         lib.showMenu('CheckTunes')
-        print('Performance tunes present')
     end
 end)
 
@@ -58,7 +85,7 @@ local CarOptions = {
         event = 'od-customs:client:CheckTunes',
         icon = 'fa-sharp fa-solid fa-car-side',
         label = 'Check Tunes',
-        distance = 2.0,
+        distance = 1.5,
     },
 }
 
