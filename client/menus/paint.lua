@@ -44,7 +44,7 @@ local menu = {
     id = 'customs-paint',
     canClose = true,
     disableInput = false,
-    position = 'top-left',
+    position = 'top-right',
     options = {},
 }
 

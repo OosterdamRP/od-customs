@@ -87,7 +87,7 @@ local menu = {
     canClose = true,
     disableInput = false,
     title = 'Wheels',
-    position = 'top-left',
+    position = 'top-right',
     options = {}
 }
 

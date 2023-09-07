@@ -102,7 +102,7 @@ local menu = {
     canClose = true,
     disableInput = false,
     options = {},
-    position = 'top-left',
+    position = 'top-right',
 }
 
 local function onSubmit(selected, scrollIndex)

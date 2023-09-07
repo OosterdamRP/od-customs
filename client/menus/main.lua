@@ -16,7 +16,7 @@ local menu = {
     canClose = true,
     disableInput = false,
     title = 'Popcorn Customs',
-    position = 'top-left',
+    position = 'top-right',
     options = {},
 }
 
@@ -139,6 +139,32 @@ end
 
 lib.callback.register('customs:client:vehicleProps', function()
     return QBCore.Functions.GetVehicleProperties(vehicle)
+end)
+
+function TriggerTune()
+    if not cache.vehicle or inMenu then return end
+    vehicle = cache.vehicle
+    SetVehicleModKit(vehicle, 0)
+    menu.options = main()
+    lib.registerMenu(menu, onSubmit)
+    lib.showMenu(menu.id, 1)
+    disableControls()
+    startDragCam(vehicle)
+end
+
+RegisterNetEvent("TuneFunctie")
+AddEventHandler("TuneFunctie", function()
+    inMenu = false
+    function menu.onClose()
+        inMenu = false
+        stopDragCam()
+        lib.hideTextUI()
+        if QBCore then
+            TriggerServerEvent("customs:server:saveVehicleProps")
+        end
+    end
+    TriggerTune()
+    lib.hideTextUI()
 end)
 
 return function()

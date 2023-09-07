@@ -109,3 +109,8 @@ RegisterNetEvent('customs:server:saveVehicleProps', function()
         MySQL.update('UPDATE player_vehicles SET mods = ? WHERE plate = ?', {json.encode(vehicleProps), vehicleProps.plate})
     end
 end)
+
+RegisterServerEvent("TuneMenu")
+AddEventHandler("TuneMenu", function()
+    TriggerClientEvent("TuneFunctie", source)
+end)
