@@ -28,6 +28,7 @@ local function parts()
         options[#options + 1] = {
             id = mod.id,
             label = mod.label,
+            icon = 'screwdriver-wrench',
             description = ('%s%s'):format(Config.Currency, Config.Prices['cosmetic']),
             values = modLabels,
             close = true,
@@ -47,6 +48,7 @@ local function parts()
     if GetVehicleClass(vehicle) ~= VehicleClass.Cycles then
         options[#options + 1] = {
             label = 'Wheels',
+            icon = 'circle-radiation',
             close = true,
             args = {
                 menu = 'client.menus.wheels',

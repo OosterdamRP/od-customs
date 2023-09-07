@@ -26,6 +26,7 @@ local function pearlescent()
     local option = {
         id = 'pearlescent',
         label = 'Pearlescent',
+        icon = 'spray-can',
         description = ('%s%s'):format(Config.Currency, Config.Prices['colors']),
         ids = ids,
         values = labels,

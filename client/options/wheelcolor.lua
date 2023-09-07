@@ -17,6 +17,7 @@ local function wheelcolor()
     local option = {
         id = 'wheelcolor',
         label = 'Wheel color',
+        icon = 'spray-can',
         description = ('%s%s'):format(Config.Currency, Config.Prices['colors']),
         ids = ids,
         values = labels,

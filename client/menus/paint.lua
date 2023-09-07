@@ -26,6 +26,7 @@ local function paintMods()
             ids = ids,
             description = ('%s%s'):format(Config.Currency, Config.Prices['colors']),
             label = category,
+            icon = 'spray-can',
             values = labels,
             close = true,
             defaultIndex = selectedIndex,

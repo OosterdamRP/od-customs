@@ -44,6 +44,7 @@ local function wheels()
         options[#options + 1] = {
             id = category.id,
             label = category.label,
+            icon = 'circle-radiation',
             description = ('%s%s'):format(Config.Currency, Config.Prices['cosmetic']),
             values = labels,
             close = true,
@@ -59,6 +60,7 @@ local function wheels()
             options[#options + 1] = {
                 id = 'rear',
                 label = 'Bike rear wheel',
+                icon = 'circle-radiation',
                 values = labels,
                 close = true,
                 set = function(_, index)

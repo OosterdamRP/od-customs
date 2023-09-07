@@ -15,7 +15,7 @@ local menu = {
     id = mainMenuId,
     canClose = true,
     disableInput = false,
-    title = 'Popcorn Customs',
+    title = 'Oosterdam Tuning',
     position = 'top-right',
     options = {},
 }
@@ -24,6 +24,7 @@ local function main()
     if GetVehicleBodyHealth(vehicle) < 1000.0 then
         return {{
             label = 'Repair',
+            icon = 'screwdriver-wrench',
             description = ('%s%d'):format(Config.Currency, math.ceil(1000 - GetVehicleBodyHealth(vehicle))),
             close = true,
         }}
@@ -32,20 +33,23 @@ local function main()
     local options = {
         {
             label = 'Performance',
+            icon = 'bolt',
             close = true,
             args = {
                 menu = 'client.menus.performance',
             }
         },
         {
-            label = 'Cosmetics - Parts',
+            label = 'Parts',
+            icon = 'screwdriver-wrench',
             close = true,
             args = {
                 menu = 'client.menus.parts',
             }
         },
         {
-            label = 'Cosmetics - Colors',
+            label = 'Kleuren',
+            icon = 'spray-can',
             close = true,
             args = {
                 menu = 'client.menus.colors',

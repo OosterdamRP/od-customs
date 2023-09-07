@@ -17,6 +17,7 @@ local function tyresmoke()
     local option = {
         id = 'tyre_smoke',
         label = 'Tyre smoke',
+        icon = 'car-side',
         description = ('%s%s'):format(Config.Currency, Config.Prices['colors']),
         close = true,
         values = smokeLabels,

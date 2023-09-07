@@ -31,6 +31,7 @@ local function livery()
     local option = {
         id = 'livery',
         label = 'Livery',
+        icon = 'spray-can',
         description = ('%s%s'):format(Config.Currency, Config.Prices['colors']),
         close = true,
         values = liveryLabels,

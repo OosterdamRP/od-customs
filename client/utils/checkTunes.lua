@@ -31,10 +31,10 @@ RegisterNetEvent('od-customs:client:CheckTunes', function()
         title = GetVehicleName(vehicle) ..' [' .. tostring(plate) .. ']',
         position = 'top-right',
         options = {
-            {label = 'Engine Level ' .. Engine .. '/4', description = 'Engine level max = 4, Stock = 0', icon = 'car-side'},
-            {label = 'Brakes Level ' .. Brakes .. '/3', description = 'Brakes level max = 3, Stock = 0', icon = 'car-side'},
-            {label = 'Transmission Level ' .. Transmission .. '/3', description = 'Transmission level max = 3, Stock = 0', icon = 'car-side'},
-            {label = 'Suspension Level ' .. Suspension .. '/5', description = 'Suspension level max = 5, Stock = 0', icon = 'car-side'},
+            {label = 'Motor Level ' .. Engine .. '/4', description = 'Engine level max = 4, Stock = 0', icon = 'car-side'},
+            {label = 'Remmen Level ' .. Brakes .. '/3', description = 'Brakes level max = 3, Stock = 0', icon = 'car-side'},
+            {label = 'Transmissie Level ' .. Transmission .. '/3', description = 'Transmission level max = 3, Stock = 0', icon = 'car-side'},
+            {label = 'Suspensie Level ' .. Suspension .. '/5', description = 'Suspension level max = 5, Stock = 0', icon = 'car-side'},
             {label = 'Turbo Level ' .. Turbo .. '/1', description = 'Turbo level max = 1, Stock = 0', icon = 'car-side'},
             {label = 'Armor Level ' .. Armor .. '/5', description = 'Armor level max = 5, Stock = 0', icon = 'car-side'},
         }
@@ -57,7 +57,7 @@ RegisterNetEvent('od-customs:client:CheckTunes', function()
     else
         lib.progressCircle({
             duration = 3000,
-            label = 'Checking tunes...',
+            label = 'Aan het kijken naar tunes...',
             position = 'bottom',
             useWhileDead = false,
             canCancel = false,

@@ -54,6 +54,7 @@ local function performance()
         options[#options+1] = {
             id = mod.id,
             label = mod.label,
+            icon = 'bolt',
             description = priceLabel(Config.Prices[mod.id]),
             values = modLabels,
             close = true,
@@ -75,6 +76,7 @@ local function performance()
         options[#options+1] = {
             id = 18,
             label = 'Turbo',
+            icon = 'fire-flame-curved',
             description = ('%s%s'):format(Config.Currency, GetVehiclePrice(vehicle) * Config.Prices[18]),
             values = {'Disabled', 'Enabled'},
             close = true,

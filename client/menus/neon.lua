@@ -11,6 +11,7 @@ local function neon()
 
         options[i] = {
             label = ('Neon %s'):format(Config.Neon[i].label),
+            icon = 'lightbulb',
             description = ('%s%s'):format(Config.Currency, Config.Prices['colors']),
             values = {
                 'Disabled',
@@ -42,6 +43,7 @@ local function neon()
 
     options[5] = {
         label = 'Neon color',
+        icon = 'lightbulb',
         close = true,
         values = neonLabels,
         rgbValues = rgbValues,

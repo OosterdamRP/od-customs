@@ -10,6 +10,7 @@ local function windowTint()
     local option = {
         id = 'window_tint',
         label = 'Window Tint',
+        icon = 'car-side',
         description = ('%s%s'):format(Config.Currency, Config.Prices['colors']),
         close = true,
         values = windowTintLabels,

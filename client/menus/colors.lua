@@ -6,6 +6,7 @@ local function colors()
     options[#options+1] = {
         label = 'Paint primary',
         close = true,
+        icon = 'spray-can',
         args = {
             menu = 'client.menus.paint',
             menuArgs = {
@@ -17,6 +18,7 @@ local function colors()
     options[#options+1] = {
         label = 'Paint secondary',
         close = true,
+        icon = 'spray-can',
         args = {
             menu = 'client.menus.paint',
             menuArgs = {
@@ -28,6 +30,7 @@ local function colors()
     options[#options+1] = {
         label = 'Neon',
         close = true,
+        icon = 'lightbulb',
         args = {
             menu = 'client.menus.neon',
         }

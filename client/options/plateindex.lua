@@ -10,6 +10,7 @@ local function plateIndex()
     local option = {
         id = 'plate_index',
         label = 'Plate Index',
+        icon = 'hashtag',
         description = ('%s%s'):format(Config.Currency, Config.Prices['cosmetic']),
         close = true,
         values = plateIndexLabels,

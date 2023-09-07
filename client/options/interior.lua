@@ -18,6 +18,7 @@ local function interior()
     local option = {
         id = 'interior',
         label = 'Interior',
+        icon = 'spray-can',
         description = ('%s%s'):format(Config.Currency, Config.Prices['colors']),
         close = true,
         values = interiorLabels,

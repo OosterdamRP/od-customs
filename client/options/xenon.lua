@@ -14,6 +14,7 @@ local function xenon()
     local option = {
         id = 'xenon',
         label = 'Xenon',
+        icon = 'lightbulb',
         description = ('%s%s'):format(Config.Currency, Config.Prices['colors']),
         close = true,
         values = xenonLabels,
